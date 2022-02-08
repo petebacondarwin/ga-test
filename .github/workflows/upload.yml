@@ -1,0 +1,17 @@
+name: Upload
+
+on: pull_request
+
+jobs:
+  upload:
+    runs-on: ubuntu-latest
+    steps:
+      - name: print
+        env:
+          PR_NUMBER: ${{ github.event.number }}
+        run: echo $PR_NUMBER > pr.txt
+      - name: Upload package as an artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: pr
+          path: pr.txt
