@@ -9,6 +9,7 @@ on:
 jobs:
   comment:
     if: ${{ github.repository_owner == 'dgeni' }}
+    runs-on: ubuntu-latest
     name: Add comment to the artifact upload id
     steps:
       - name: Comment on PR with Link
