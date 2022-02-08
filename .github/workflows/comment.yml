@@ -12,8 +12,10 @@ jobs:
     runs-on: ubuntu-latest
     name: Add comment to the artifact upload id
     steps:
+      - name: write
+        run: echo ${{ toJSON(github.event) }} > foo.txt
       - name: print
-        run: echo ${{ toJSON(github.event) }}
+        run: cat foo.txt
       - name: Comment on PR with Link
         uses: marocchino/sticky-pull-request-comment@v2
         with:
