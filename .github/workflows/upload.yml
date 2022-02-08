@@ -1,0 +1,12 @@
+name: Upload
+
+on: pull_request
+
+jobs:
+  upload:
+    steps:
+      - name: Upload package as an artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: foo
+          path: README
