@@ -13,10 +13,10 @@ jobs:
     name: Add comment to the artifact upload id
     steps:
       - name: print
-        run: echo ${{ github.event.workflow_run.pull_requests[0] }}
+        run: echo ${{ github.event.workflow_run.pull_requests[0].id }}
       - name: Comment on PR with Link
         uses: marocchino/sticky-pull-request-comment@v2
         with:
-          number: ${{ github.event.workflow_run.pull_requests[0] }}
+          number: ${{ github.event.workflow_run.pull_requests[0].id }}
           message: |
             ${{ github.event.workflow_run.id }}
