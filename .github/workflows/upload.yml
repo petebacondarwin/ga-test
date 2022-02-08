@@ -6,8 +6,10 @@ jobs:
   upload:
     runs-on: ubuntu-latest
     steps:
+      - name: print
+        run: echo ${{ github.event.number }} > pr.txt
       - name: Upload package as an artifact
         uses: actions/upload-artifact@v2
         with:
-          name: foo
-          path: README*
+          name: pr
+          path: pr.txt
