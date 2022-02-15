@@ -7,9 +7,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: print
-        run: echo ${{ github.event.number }} > pr.txt
+        run: node -e "require('fs').writeFileSync(`pr-{{github.event.number}}.txt`, {{ github.event.number }}, 'utf8')"
       - name: Upload package as an artifact
         uses: actions/upload-artifact@v2
         with:
           name: pr
-          path: pr.txt
+          path: pr*.txt

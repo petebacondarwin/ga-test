@@ -12,11 +12,15 @@ jobs:
     runs-on: ubuntu-latest
     name: Add comment to the artifact upload id
     steps:
-      - name: print
-        run: echo ${{ github.event.workflow_run.pull_requests[0].number }}
-      - name: Comment on PR with Link
-        uses: marocchino/sticky-pull-request-comment@v2
+      - name: Download PR number as artifact
+        uses: actions/download-artifact@v2
         with:
-          number: ${{ github.event.workflow_run.pull_requests[0].number }}
-          message: |
-            ${{ github.event.workflow_run.id }}
+          name: pr
+      - name: print
+        run: ls
+      # - name: Comment on PR with Link
+      #   uses: marocchino/sticky-pull-request-comment@v2
+      #   with:
+      #     number: ${{ github.event.workflow_run.pull_requests[0].number }}
+      #     message: |
+      #       ${{ github.event.workflow_run.id }}
